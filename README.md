@@ -53,30 +53,34 @@ are features with higher variance more important than features with lower varian
 
 当需要长记忆-RNN 如问答语义提取
 需要提取更多特征-CNN 需要提取更多信息 比如name entity提取
-有哪些activation function，CNN应该用哪个？为什么？
+
+**ACTIVATION FUNCTION WHICH ONE FOR CNN**
+
 Activation: linear-> nonlinear (for universal approximation)
 If no activation, then is just multiplication(linear)
 Need to be Differentiable: calculate the derivative
-Sigmoid(0, 1)/ tanh(-1, 1): vanishing gradient
-ReLU for hidden layers: solves vanishing gradient
-Leaky ReLU for hidden layers : solves bad Neurals(never updates)
-Softmax for output: probability for different classes – sum to 1
-Linear for output: for regression
+
+- Sigmoid(0, 1)/ tanh(-1, 1): vanishing gradient
+- ReLU for hidden layers: solves vanishing gradient
+- Leaky ReLU for hidden layers : solves dead Neurals(never updates)
+- Softmax for output: probability for different classes – sum to 1
+- Linear for output: for regression
 
 **HOW TO CHOOSE THE NUMBER OF LAYERS OF NN?**
 
 当且仅当数据非线性分离时才需要隐藏层。 多个隐藏层可以用于拟合非线性函数。对于一般简单的数据集，一两层隐藏层通常就足够了。
-没有隐藏层：仅能够表示线性可分函数或决策
-隐藏层数=1：可以拟合任何“包含从一个有限空间到另一个有限空间的连续映射”的函数
-隐藏层数=2：搭配适当的激活函数可以表示任意精度的任意决策边界，并且可以拟合任何精度的任何平滑映射
-隐藏层数>2：多出来的隐藏层可以学习复杂的描述（某种自动特征工程）
+- 没有隐藏层：仅能够表示线性可分函数或决策
+- 隐藏层数=1：可以拟合任何“包含从一个有限空间到另一个有限空间的连续映射”的函数
+- 隐藏层数=2：搭配适当的激活函数可以表示任意精度的任意决策边界，并且可以拟合任何精度的任何平滑映射
+- 隐藏层数>2：多出来的隐藏层可以学习复杂的描述（某种自动特征工程）
 层数越深，理论上拟合函数的能力增强，效果按理说会更好，但是实际上更深的层数可能会带来过拟合的问题，同时也会增加训练难度，使模型难以收敛。
-怎么样选择NN每层的neuron数目？
-太多-overfit 太少underfit。
 
-隐藏神经元的数量应在输入层的大小和输出层的大小之间。
-隐藏神经元的数量应为输入层大小的2/3加上输出层大小的2/3。
-隐藏神经元的数量考虑引入Batch Normalization, Dropout, 正则化等降低过拟合的方法。应小于输入层大小的两倍。
+**NUMBER OF NEURON IN EACH LAYER**
+
+太多-overfit 太少underfit。
+- 隐藏神经元的数量应在输入层的大小和输出层的大小之间。
+- 隐藏神经元的数量应为输入层大小的2/3加上输出层大小的2/3。
+- 隐藏神经元的数量考虑引入Batch Normalization, Dropout, 正则化等降低过拟合的方法。应小于输入层大小的两倍。
 各个hidden layer 相同数目就行，或者递减，低层次提取更多的特征。
 
 **BATCH NORM**
@@ -99,14 +103,6 @@ shrinks all the coefficient by the same proportions but eliminates none
 
 simple way to prevent overfitting. It is the dropping out of some of the units in a 
 neural network. 
-
-**ACTIVATION FUNCTIONS**
-- Sigmoid
-- Softmax
-- tanh
-- ReLU
-- Leaky ReLU
-
 
 ## Deep Learning Training
 **HYPER PARAMETER TUNING: HOW**
