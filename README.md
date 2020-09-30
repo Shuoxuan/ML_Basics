@@ -1,7 +1,7 @@
-# ML_Basics
+# Machine Learning Basics
 A collection of ML interview questions.
 
-##Data Preprocessing
+## Data Preprocessing
 
 **THREE STAGES TO BUILD ML MODELS**
 
@@ -39,7 +39,7 @@ There are different options to deal with imbalanced datasets:
 - Multidimensional Scaling
 - Locally linear embedding
 
-##Model Selection and Design
+## Model Selection and Design
 
 **NLP中用CNN和RNN哪个更快，更好，为什么？**
 
@@ -81,7 +81,7 @@ shrinks all the coefficient by the same proportions but eliminates none
 
 **DROPOUT**
 
-##Deep Learning Training
+## Deep Learning Training
 **HYPER PARAMETER TUNING: HOW**
 - Grid search hyper parameters with XGboost, 
 ```
@@ -136,7 +136,7 @@ Actual Yes | 5 | 100
 - Recall = 100/ 150
 - Precision = 100/110 (打中多少)
 - F1-Score = 2 * (precision * recall) / (precision + recall)
-##Ensemble
+## Ensemble
 
 **BAGGING**
 
@@ -158,7 +158,7 @@ An ensemble is the combination of multiple models to create a single prediction.
  That way the errors of one model will be compensated by the right guesses of 
  the other models and thus the score of the ensemble will be higher.
 
-##System Design
+## System Design
 
 **RECOMMENDER SYSTEM**
 
