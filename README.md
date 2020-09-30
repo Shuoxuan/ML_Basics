@@ -39,6 +39,14 @@ There are different options to deal with imbalanced datasets:
 - Multidimensional Scaling
 - Locally linear embedding
 
+**PCA**
+
+projects the data into a lower dimensional space. Given the columns of X, 
+are features with higher variance more important than features with lower variance
+
+![pca](images/pca.gif)
+
+
 ## Model Selection and Design
 
 **NLP中用CNN和RNN哪个更快，更好，为什么？**
@@ -73,6 +81,14 @@ Linear for output: for regression
 
 **BATCH NORM**
 
+Training Deep Neural Networks is complicated by the fact that the distribution of each layer's inputs changes during training, 
+as the parameters of the previous layers change. 
+The idea is then to normalize the inputs of each layer in such a way that they have a mean output activation of zero and standard deviation of one. 
+This is done for each individual mini-batch at each layer i.e compute the mean and variance of that mini-batch alone, then normalize. This is analogous to how the inputs to networks are standardized. 
+- Normalizing the inputs to a network helps it learn. Thought of as a series of neural networks feeding into each other, 
+we normalize the output of one layer before applying the activation function, and then feed it into the following layer.
+- Reduce the influence of the preceding layers on the following ones.
+
 **REGULARIZATION**
 - **L1 Lasso**
 shrink some coefficients to zero, performing variable selection.
@@ -80,6 +96,17 @@ shrink some coefficients to zero, performing variable selection.
 shrinks all the coefficient by the same proportions but eliminates none
 
 **DROPOUT**
+
+simple way to prevent overfitting. It is the dropping out of some of the units in a 
+neural network. 
+
+**ACTIVATION FUNCTIONS**
+- Sigmoid
+- Softmax
+- tanh
+- ReLU
+- Leaky ReLU
+
 
 ## Deep Learning Training
 **HYPER PARAMETER TUNING: HOW**
@@ -107,6 +134,14 @@ the higher it is, the longer it will take to compute the gradient for each step.
 Use grid search for batch size and lr or other optimizer like ADAM.
 
 **VANISHING GRADIENT/ EXPLODING GRADIENT/ DEAD NEURONS**
+1. Vanishing Gradient: As information is passed back, the gradients begin to vanish and become small relative to 
+the weights of the networks.
+Techniques inlcuding 
+    - ReLU activation (they only saturate in one direction), could cause dead neurons (gradient be either 1 or 0)
+    - Residual connections (allow gradient information to pass through the layers)
+2. Exploding Gradient: Gradient too large which causes problems. could use gradient clipping.
+3. Dead neurons: return 0 forever and never learn because the gradient is never passed through. 
+Solve by LeakyReLU (gradient is non-zero everywhere)
 
 **UNDERFIT/ OVERFIT, BIAS/ VARIANCE**
 - The bias error is an error from erroneous assumptions in the learning algorithm. 
@@ -119,6 +154,7 @@ rather than the intended outputs (overfitting).
 - Simpler model: less parameters
 - Dropout/ Regularization
 - Cross validation
+
 ![cv](images/cv.png)
 
 **CONFUSION MATRIX**
@@ -127,7 +163,7 @@ n=165 | Predicted No | Predicted Yes
 --- | --- | ---
 Actual No | 50 | 10
 Actual Yes | 5 | 100
-
+```
 - False Positive = 10
 - False Negative = 5
 - True Positive = 100
@@ -136,6 +172,20 @@ Actual Yes | 5 | 100
 - Recall = 100/ 150
 - Precision = 100/110 (打中多少)
 - F1-Score = 2 * (precision * recall) / (precision + recall)
+```
+
+**EXPLAIN ROC CURVE**
+
+```
+True Positive Rate (sensitivity) = True Positives / (True Positives + False Negatives)
+False Positive Rate = False Positives / (False Positives + True Negatives)
+```
+
+The ROC curve is a graphical representation of the contrast between true positive rates and the false positive rate at 
+various thresholds. Need the Area Under Curve to be  large (AUC).
+
+![roc](images/roc.png)
+
 ## Ensemble
 
 **BAGGING**
