@@ -9,7 +9,17 @@ A collection of ML interview questions.
 - Test
 - Apply/ Scale up for inference
 
-**NLP数据预处理有啥手段? (TOKENIZATION)**
+**NLP PREPROCESS**
+- **Sentense Segmentation** break the text apart into separate sentences.
+- **Tokenization** break this sentence into separate words or tokens, easy in English, not in Chinese
+- **Stemming** apples - apple
+- **Lemmatization** ponies - pony, is - be, doing - do
+- **Word Embedding** 
+    - Frequency based Embedding
+        - Count Vector
+        - TF-IDF Vector
+        - Co-Occurrence Vector
+    - Prediction based Embedding
 
 **MISSING/ CORRUPTED VALUE**
 - Remove record if not much
@@ -49,10 +59,9 @@ are features with higher variance more important than features with lower varian
 
 ## Model Selection and Design
 
-**NLP中用CNN和RNN哪个更快，更好，为什么？**
-
-当需要长记忆-RNN 如问答语义提取
-需要提取更多特征-CNN 需要提取更多信息 比如name entity提取
+**CNN & RNN, WHICH ONE FOR NLP (BETTER AND FASTER)**
+- long-term memory, then RNN. e.g. semantic extraction, answering a question like Alexa
+- to extract more features and information, CNN. e.g. Name Entity Recognition (NER)
 
 **ACTIVATION FUNCTION WHICH ONE FOR CNN**
 
@@ -68,7 +77,9 @@ Need to be Differentiable: calculate the derivative
 
 **HOW TO CHOOSE THE NUMBER OF LAYERS OF NN?**
 
-当且仅当数据非线性分离时才需要隐藏层。 多个隐藏层可以用于拟合非线性函数。对于一般简单的数据集，一两层隐藏层通常就足够了。
+We need hidden layer iff the data are not linear separable. Multi-hidden layer could be used to model non-linearity. 
+1-2 layers is enough for simple dataset.
+
 - 没有隐藏层：仅能够表示线性可分函数或决策
 - 隐藏层数=1：可以拟合任何“包含从一个有限空间到另一个有限空间的连续映射”的函数
 - 隐藏层数=2：搭配适当的激活函数可以表示任意精度的任意决策边界，并且可以拟合任何精度的任何平滑映射
@@ -77,7 +88,7 @@ Need to be Differentiable: calculate the derivative
 
 **NUMBER OF NEURON IN EACH LAYER**
 
-太多-overfit 太少underfit。
+high - overfit, low - underfit
 - 隐藏神经元的数量应在输入层的大小和输出层的大小之间。
 - 隐藏神经元的数量应为输入层大小的2/3加上输出层大小的2/3。
 - 隐藏神经元的数量考虑引入Batch Normalization, Dropout, 正则化等降低过拟合的方法。应小于输入层大小的两倍。
